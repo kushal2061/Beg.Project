@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      .bdy {
+        background-color: rgb(144, 234, 157);
+        height: 350px;
+        width: 400px;
+        text-align: center;
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 10px;
+        box-sizing: border-box;
+        
+      }
+      h3 {
+        font-size: 27px;
+        padding: 4px;
+        border-radius: 5px;
+        background-color: rgb(27, 40, 52);
+        color: aliceblue;
+      }
+      #temperature {
+        font-size: 30px;
+        background-color: rgb(177, 235, 233);
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      label {
+        font-size: 20px;
+        color: rgb(6, 4, 95);
+        font-weight: bold;
+      }
+      #result {
+        font-size: 20px;
+        color: rgb(174, 21, 16);
+        font-family: cursive;
+      }
+      #cal {
+        background-color: rgb(220, 221, 134);
+        font-size: 30px;
+        border-radius: 5px;
+      }
+      #cal:hover{
+        background-color: rgb(233, 89, 89);
+       font-size: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bdy">
+      <h3 id="head">Temperature Converter</h3>
+      <br />
+
+      <input type="text" id="temperature" placeholder="Enter Temperature" /><br /><br />
+
+      <input type="radio" name="temperature" id="celsus"  />
+      <label for="celsus"> Celsus ➡️ Fahrenheit</label><br />
+      <input type="radio" name="temperature" id="fahrenheit"  />
+      <label for="fahrenheit">Fahrenheit ➡️ Celsus</label>
+
+      <p id="result">&nbsp;</p>
+      <button id="cal" onclick="getTemperatur()">Calculate</button>
+      
+    </div>
+
+    <script>
+      function getTemperatur() {
+        let temperatureInput = parseFloat(document.getElementById("temperature").value);
+
+        let cal = document.getElementById("celsus");
+        let fah = document.getElementById("fahrenheit");
+        let result = document.getElementById("result");
+
+        if(isNaN(temperatureInput)){
+          result.textContent = "Plese insert valid number! ";
+          return;
+        }
+  
+        if (temperatureInput == "" ) {
+          result.textContent = "Insert Temperature";
+        } else if (cal.checked) {
+          temp = (9 / 5) * temperatureInput + 32;
+          result.textContent = temperatureInput + "° C is " + temp + "° F";
+        } else if (fah.checked) {
+          temp = (temperatureInput - 32) * (5 / 9);
+          result.textContent = temperatureInput + "° F is " + temp + "° C";
+        } else {
+          result.textContent = "Error";
+        }
+      }
+    </script>
+  </body>
+</html>

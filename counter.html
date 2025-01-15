@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      #counter {
+        background-color: rgb(75, 195, 183);
+        height: 300px;
+        width: 400px;
+        text-align: center;
+        border: 2px solid;
+        border-radius: 10px;
+      }
+      h1 {
+        color: rgb(255, 255, 255);
+        background-color: #0c4767;
+        width: 200px;
+        height: 40px;
+        padding: 2px;
+        text-align: center;
+        margin-left: 21%;
+        border-radius: 20px;
+      }
+      #number {
+        font-size: 70px;
+        color: #460404;
+        width: 70px;
+        margin-left: 40%;
+        margin-right: 50%;
+      }
+      button {
+        font-size: 25px;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+        background-color: #566e3d;
+        color: aliceblue;
+      }
+      button:hover {
+        background-color: #ab3030;
+        color: #080c0d;
+        font-size: 30px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="counter">
+      <h1>Counter</h1>
+      <div id="number">0</div>
+      <!--better to use label tag-->
+      <br />
+      <button id="decrement" onclick="decrese()">Decrese</button>
+      <button id="reset" onclick="reset()">Reset</button>
+      <button id="increment" onclick="increse()">Increse</button>
+    </div>
+
+    <script>
+      let num;
+      let n;
+
+      function increse() {
+        num = document.getElementById("number");
+        n = Number(num.textContent);
+        n++;
+        num.textContent = n;
+      }
+
+      function decrese() {
+        num = document.getElementById("number");
+        n = Number(num.textContent);
+        n -= 1;
+        num.textContent = n;
+      }
+
+      function reset() {
+        num = document.getElementById("number");
+        n = Number(num.textContent);
+        n = 0;
+        num.textContent = n;
+      }
+    </script>
+  </body>
+</html>
