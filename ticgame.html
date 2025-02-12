@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tak Toe</title>
+    
+    <style>
+        body{
+
+            background-color: #9DA9A0;
+            text-align: center;
+
+        }
+        #container {
+           
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            
+
+        }
+        #ticbdy{
+            height: 70vmin;
+            width: 70vmin;
+            display: flex;
+            
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5%;
+
+        }
+
+        .box {
+            height: 20vmin;
+            width: 20vmin;
+            background-color: #C0CAAD;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 2px 1px 2px rgb(230, 94, 94);
+            font-size: 5vmin;
+            color: black;
+            
+        }
+        button:hover{
+            background-color: #879571;
+            cursor: pointer;
+            
+        }
+        #reset{
+            height:10vmin;
+            width: 15vmin;
+            background-color: #881b1b;
+            color: aliceblue;
+            font-size: 2vmin;
+            
+        }
+        #display{
+            font-size: 40px;
+            color: rgb(64, 117, 64);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>Tic Tak Toe</h2>
+    <div id="container">
+        <div id="ticbdy">
+            <button class="box">   </button>
+            <button class="box">   </button>
+            <button class="box">   </button>
+            <button class="box">   </button>
+            <button class="box">   </button>
+            <button class="box">   </button>
+            <button class="box">   </button>
+            <button class="box">   </button>
+            <button class="box">   </button>
+
+
+        </div>
+        
+    </div>
+    <button id="reset">RESET</button>
+    <p id="display">.</p>
+    
+
+</body>
+<script src="basic.js"></script>
+</html>
