@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(0, 0, 0);
+            color: #4AF626;
+            font-family:'Courier New', Courier, monospace;
+            padding: 10px;
+        }
+    </style>
+    
+</head>
+
+<body>
+ 
+    <div id="container"> 
+    
+    </div>
+
+</body>
+<script >
+    
+let container = document.getElementById("container");
+let msglist=["initialized hacking","reading your files...",
+    "password files detected...","sending password and personal files to server...",
+    "cleaning up...","hacking completed!" ];
+
+async function messageShow() {
+      
+     for (const msg of msglist){
+        await creatingMsg(msg);
+    } 
+}
+
+function creatingMsg(msg) {
+    let ran = (Math.floor(Math.random() * 7)+2) * 1000;
+    console.log(ran);
+    let tag = document.createElement("p")
+    container.appendChild(tag);
+
+    return new Promise((resolve => {
+        setTimeout(() => {
+            resolve(container.appendChild(tag).textContent = msg);
+        }, ran)
+    }));
+
+}
+
+messageShow();
+</script>
+</html>
