@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            max-width: 100vw;
+            max-height: 50vh;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-family: sans-serif;
+          
+        }
+        .block {
+            display: flex;
+            max-width: 45vw;
+            min-width: 45vw;
+            background-color: rgb(71, 68, 68);
+            padding: 10px;
+            margin: 5px 0px;
+            justify-content: space-around;
+        }
+
+        .image {
+            position: relative;
+            background-color: rgb(143, 146, 146);
+            width: 30%;
+            border-radius: 7%;
+            
+        }
+        .image>img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 7%;
+        }
+
+        .duration {
+            position: absolute;
+            bottom: 4%;
+            right: 4%;
+            background-color: rgba(103, 96, 96, 0.668);
+            color: white;
+            border-radius: 10%;
+            padding: 2%;
+            font-size: 0.7rem;
+
+        }
+
+        .text {
+            background-color: rgba(141, 194, 174, 0);
+            width: 65%;
+            padding: 0px 10px;
+            color: aliceblue;
+           
+
+        }
+
+        .title {
+            font-size: 1.4rem;
+            margin: 2px 0px;
+        }
+
+        .channel,
+        .foot {
+            font-size: .7rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+     
+
+    </div>
+
+    <script>
+        let container=document.getElementById("container");
+
+        let obj1={
+            title:"How to download window",
+            channel:"Tech Support",
+            view: "20k",
+            uDate: "1 year ago",
+            thumnail: "city.jpg",
+            duration: "20:00"
+
+        }
+        let obj2={
+            title:"How to remove virus",
+            channel:"Tech Support",
+            view: "30k",
+            uDate: "1.5 year ago",
+            thumnail: "2155.jpg",
+            duration: "15:00"
+
+        }
+
+
+
+        function createCard(title, channel, views, uDates, thumnail, duration) {
+
+            let block=document.createElement("div");
+            let image= document.createElement("div");
+            let timage=image.innerHTML=`<img src="${thumnail}" alt="image">`;
+            let dura=document.createElement("div");
+
+            let text=document.createElement("div");
+            let titlep=document.createElement("p");
+            let channelp=document.createElement("p");
+            let footer=document.createElement("div");
+            let view=document.createElement("span");
+            let uDate=document.createElement("span");
+            
+            container.appendChild(block);
+            block.appendChild(image);
+            image.appendChild(dura).textContent=duration;
+
+
+            block.appendChild(text);
+            text.appendChild(titlep).textContent=title;
+            text.appendChild(channelp).textContent=`${channel} ✓`;
+            text.appendChild(footer);
+            footer.appendChild(view).textContent=`${views} views`;
+            footer.appendChild(uDate).textContent=` ⋅ ${uDates}`;
+
+            block.classList.add("block");
+            image.classList.add("image");
+            dura.classList.add("duration");
+            text.classList.add("text");
+            channelp.classList.add("channel");
+            footer.classList.add("foot");        
+                  
+
+
+        }
+
+createCard(...Object.values(obj1));
+createCard(...Object.values(obj2));
+
+    </script>
+</body>
+
+</html>
