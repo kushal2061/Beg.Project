@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .body {
+            background-color: rgb(166, 172, 172);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            font-size: 20px;
+            border-radius: 30px;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        input {
+            font-size: 30px;
+        }
+        button{
+            margin: 10px;
+            background-color: green;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body" id="body">
+        <h1>Dictionary</h1>
+        <input type="text" name="" id="value" placeholder="type your word here">
+        <button id="button">Find</button>
+    </div>
+
+    <!-- javascript code -->
+    <script>
+        let button = document.getElementById('button')
+        const body = document.getElementById("body")
+        async function displayValue() {
+            let letter = document.getElementById("value").value;
+            if (!letter) {
+                alert("Please enter a word");
+                return;
+            }
+            const api_url = `https://api.dictionaryapi.dev/api/v2/entries/en/${letter}`;
+            let a;
+            try {
+                data = await fetch(api_url);
+                a = await data.json()
+            }
+            catch (error) {
+                console.error(error);
+                
+            }
+
+            let word = a[0].word
+            let defination = a[0].meanings[2].definitions[0].definition
+            let example = a[0].meanings[2].definitions[0].example
+            let sound = a[0].phonetics[0].audio
+
+            let p_word = document.createElement("p")
+            let p_defination = document.createElement("p")
+            let p_example = document.createElement("p")
+
+            body.appendChild(p_word).textContent = `Word : ${word}`;
+            body.appendChild(p_defination).textContent = `Defination : ${defination}`;
+            body.appendChild(p_example).textContent = `Example : ${example}`;
+
+            if (sound) {
+                let audioElement = document.createElement("audio");
+                audioElement.controls = true;
+                audioElement.src = sound;
+                body.appendChild(audioElement);
+            }
+
+            body.classList.add("body")
+
+        }
+
+
+        button.addEventListener("click", () => {
+            displayValue()
+        })
+        
+    </script>
+</body>
+
+</html>
